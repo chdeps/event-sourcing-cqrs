@@ -18,10 +18,7 @@ export class AppService {
   private readonly articleRepository = this.entityManager.getRepository(ArticleEntity);
 
   public async storeArticle(article: ArticleDto): Promise<ArticleEntity> {
-    this.commandBus.execute(new CreateArticleCommand(article));
-    const newArticle = await this.articleRepository.create(article);
-    this.articleRepository.save(newArticle);
-    return newArticle;
+    return this.commandBus.execute(new CreateArticleCommand(article));
   }
 
   public getAllArticles(): Promise<ArticleEntity[]> {
