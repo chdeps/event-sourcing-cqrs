@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CreateArticleHandler } from './commands/handlers/create-article.handler';
+import { EventSaga } from './article.saga';
 
 @Module({
   imports: [
@@ -21,6 +22,6 @@ import { CreateArticleHandler } from './commands/handlers/create-article.handler
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, CreateArticleHandler],
+  providers: [AppService, CreateArticleHandler, EventSaga],
 })
 export class AppModule {}
