@@ -3,6 +3,7 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CreateArticleHandler } from './commands/handlers/create-article.handler';
 
 @Module({
   imports: [
@@ -20,6 +21,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, CreateArticleHandler],
 })
 export class AppModule {}
