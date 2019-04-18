@@ -17,4 +17,9 @@ export class AppService {
     repository.save(newArticle);
     return newArticle;
   }
+
+  public async getAllArticles(): Promise<ArticleEntity[]> {
+    const repository = this.entityManager.getRepository(ArticleEntity);
+    return repository.find();
+  }
 }
