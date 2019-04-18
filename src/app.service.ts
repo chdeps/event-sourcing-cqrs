@@ -20,7 +20,10 @@ export class AppService {
   }
 
   public getAllArticles(): Promise<ArticleEntity[]> {
-    const repository = this.entityManager.getRepository(ArticleEntity);
-    return repository.find();
+    return this.articleRepository.find();
+  }
+
+  public getArticle(id: number): Promise<ArticleEntity> {
+    return this.articleRepository.findOne(id);
   }
 }
