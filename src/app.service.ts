@@ -11,14 +11,15 @@ export class AppService {
   private readonly entityManager: EntityManager) {
   }
 
+  private readonly articleRepository = this.entityManager.getRepository(ArticleEntity);
+
   public async storeArticle(article: ArticleDto): Promise<ArticleEntity> {
-    const repository = this.entityManager.getRepository(ArticleEntity);
-    const newArticle = await repository.create(article);
-    repository.save(newArticle);
+    const newArticle = await this.articleRepository.create(article);
+    this.articleRepository.save(newArticle);
     return newArticle;
   }
 
-  public async getAllArticles(): Promise<ArticleEntity[]> {
+  public getAllArticles(): Promise<ArticleEntity[]> {
     const repository = this.entityManager.getRepository(ArticleEntity);
     return repository.find();
   }
