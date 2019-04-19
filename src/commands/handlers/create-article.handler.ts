@@ -15,6 +15,6 @@ export class CreateArticleHandler implements ICommandHandler<CreateArticleComman
     let newArticle = createArticle(command.articleDto);
     newArticle = this.eventPublisher.mergeObjectContext(newArticle);
     newArticle.commit();
-    return newArticle;
+    return savedArticle;
   }
 }
